@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BankService WSDL service -->
+
+  <service name="Bank" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://BankService"/>
+      <parameter name="wsdlServiceElement" value="BankService"/>
+      <parameter name="schemaQualified" value="http://BankService"/>
+      <parameter name="wsdlServicePort" value="Bank"/>
+      <parameter name="className" value="BankService_pkg.BankSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Bank"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="withdrawalOf" qname="operNS:withdrawalOf" xmlns:operNS="http://BankService" returnQName="retNS:withdrawalOfReturn" xmlns:retNS="http://BankService" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:amount" xmlns:pns="http://BankService" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="depositOf" qname="operNS:depositOf" xmlns:operNS="http://BankService" soapAction="" >
+        <parameter qname="pns:amount" xmlns:pns="http://BankService" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="balanceValue" qname="operNS:balanceValue" xmlns:operNS="http://BankService" returnQName="retNS:balanceValueReturn" xmlns:retNS="http://BankService" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="balanceValue withdrawalOf depositOf"/>
+
+  </service>
+</deployment>

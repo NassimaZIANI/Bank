@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="withdrawalOf">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="amount" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="withdrawalOfResponse">
+    <complexType>
+     <sequence>
+      <element name="withdrawalOfReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="depositOf">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="amount" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="depositOfResponse">
+    <complexType/>
+   </element>
+   <element name="balanceValue">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="balanceValueResponse">
+    <complexType>
+     <sequence>
+      <element name="balanceValueReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="withdrawalOfRequest">
+
+      <wsdl:part element="impl:withdrawalOf" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="balanceValueResponse">
+
+      <wsdl:part element="impl:balanceValueResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="depositOfResponse">
+
+      <wsdl:part element="impl:depositOfResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="withdrawalOfResponse">
+
+      <wsdl:part element="impl:withdrawalOfResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="depositOfRequest">
+
+      <wsdl:part element="impl:depositOf" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="balanceValueRequest">
+
+      <wsdl:part element="impl:balanceValue" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Bank">
+
+      <wsdl:operation name="withdrawalOf">
+
+         <wsdl:input message="impl:withdrawalOfRequest" name="withdrawalOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:withdrawalOfResponse" name="withdrawalOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="balanceValue">
+
+         <wsdl:input message="impl:balanceValueRequest" name="balanceValueRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:balanceValueResponse" name="balanceValueResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BankSoapBinding" type="impl:Bank">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="withdrawalOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="withdrawalOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="withdrawalOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="depositOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="depositOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="balanceValue">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="balanceValueRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="balanceValueResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BankService">
+
+      <wsdl:port binding="impl:BankSoapBinding" name="Bank">
+
+         <wsdlsoap:address location="http://localhost:8080/Bank/services/Bank"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
